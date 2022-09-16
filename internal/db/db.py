@@ -36,7 +36,11 @@ def create_author_resp(id, fname, lname, created_at):
 
 class Database:
 
-    db = connect_DB()
+    db = None
+
+    @classmethod
+    def connect_to_db(cls, db):
+        cls.db = db
 
     @classmethod
     def get_all_books(cls):

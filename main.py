@@ -1,12 +1,17 @@
 from fastapi import HTTPException, Path, FastAPI
 from internal.db.db import Database
 from internal.models.models import PostAuthor
+from internal.driver.driver import connect_DB
 
 import psycopg2
 
 app = FastAPI()
 
 DB = Database()
+
+conn = connect_DB()
+
+DB.connect_to_db(conn)
 
 
 @app.get("/books")
